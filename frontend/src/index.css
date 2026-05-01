@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&family=Cinzel:wght@400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f0ece4;
+}
+
+#root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    text-align: left;
+}
+
+/* ─── Dashboard layout ─── */
+.app {
+    display: flex;
+    height: 100svh;
+    background: #f0ece4;
+    overflow: hidden;
+    font-family: 'IM Fell English', serif;
+}
+
+/* ─── Taskbar ─── */
+.taskbar {
+    width: 56px;
+    min-width: 56px;
+    background: #142d40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0;
+    overflow: visible;
+    z-index: 20;
+}
+
+.tb-date {
+    font-family: 'Share Tech Mono', monospace;
+    color: #8ab0c4;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.4;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2a4d65;
+    width: 36px;
+    margin-bottom: 14px;
+}
+
+.tb-btn {
+    width: 37px;
+    height: 37px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #c8dce8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+    user-select: none;
+    transition: background 0.12s;
+}
+
+.tb-btn:hover,
+.tb-btn.active {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+}
+
+.tb-spacer {
+    flex: 1;
+}
+
+.power-wrap {
+    position: relative;
+}
+
+.power-menu {
+    position: absolute;
+    left: 46px;
+    bottom: 0;
+    background: #1a364a;
+    border: 1px solid #2a4d65;
+    min-width: 200px;
+    padding: 12px;
+    z-index: 30;
+}
+
+.pm-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4d65;
+    margin-bottom: 10px;
+}
+
+.pm-avatar {
+    width: 30px;
+    height: 30px;
+    background: #3e586c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    color: #f0ece4;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.pm-name {
+    font-family: 'IM Fell English', serif;
+    color: #f0ece4;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.pm-email {
+    font-family: 'Share Tech Mono', monospace;
+    color: #8ab0c4;
+    font-size: 14px;
+    word-break: break-all;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.pm-logout {
+    width: 100%;
+    background: #862222;
+    border: none;
+    color: #f0ece4;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px;
+    cursor: pointer;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.pm-logout:hover {
+    background: #a02a2a;
+}
+
+/* ─── Center panel ─── */
+.center-col {
+    width: 370px;
+    min-width: 155px;
+    padding: 28px 18px;
+    border-right: 1px solid #c8c0b4;
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.c-title {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: #142d40;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.c-divider {
+    height: 1px;
+    background: #142d40;
+    margin-bottom: 14px;
+}
+
+.c-body {
+    font-family: 'IM Fell English', serif;
+    color: #1a364a;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.c-body em {
+    font-style: italic;
+    color: #3e586c;
+}
+
+.c-icon {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+}
+
+/* ─── Task list ─── */
+.task-col {
+    width: 630px;
+    min-width: 210px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #c8c0b4;
+    flex-shrink: 0;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid #c8c0b4;
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.task-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #1a364a;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.add-btn {
+    width: 22px;
+    height: 22px;
+    background: #142d40;
+    color: #f0ece4;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.add-btn:hover {
+    background: #3e586c;
+}
+
+.task-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background: #fff;
+}
+
+.task-scroll::-webkit-scrollbar {
+    width: 3px;
+}
+
+.task-scroll::-webkit-scrollbar-thumb {
+    background: #3e586c;
+}
+
+.empty-state {
+    font-style: italic;
+    color: #8ab0c4;
+    font-size: 13px;
+    text-align: center;
+    padding: 24px 12px;
+    line-height: 1.7;
+    margin: auto 0;
+}
+
+/* ─── Task card ─── */
+.task-card {
+    border: 1px solid #3e586c;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+    isolation: isolate;
+}
+
+.task-card.selected {
+    border-color: #1a364a;
+    border-width: 1.5px;
+}
+
+.task-card.selected::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(194, 194, 194, 0.38);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.task-card.late {
+    border-color: #862222;
+}
+
+.task-card.late .tc-titlebar {
+    background: #862222;
+}
+
+.task-card.done .tc-titlebar {
+    background: #f0f0f0;
+    border-bottom: 1px solid #3e586c;
+}
+
+.task-card.done .tc-title {
+    color: #1a364a;
+}
+
+.task-card.done .wb-min,
+.task-card.done .wb-max {
+    background: #fff;
+    border-color: #3e586c;
+    color: #3e586c;
+}
+
+.task-card.done .wb-min:hover,
+.task-card.done .wb-max:hover {
+    background: #e8f0f5;
+}
+
+.tc-titlebar {
+    background: #3e586c;
+    display: flex;
+    align-items: center;
+    padding: 3px 5px;
+    gap: 3px;
+}
+
+.tc-title {
+    flex: 1;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #f0ece4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 4px;
+    letter-spacing: .02em;
+}
+
+.wb {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: #f0ece4;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.wb:hover {
+    background: rgba(255, 255, 255, .28);
+}
+
+.wb-close {
+    background: #862222 !important;
+    border-color: #a03030 !important;
+}
+
+.wb-close:hover {
+    background: #a02a2a !important;
+}
+
+.tc-body {
+    padding: 7px 9px;
+    background: #f9f6f0;
+}
+
+.tc-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #1a364a;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ─── Status colors ─── */
+.s-ongoing {
+    color: #1a364a;
+}
+
+.s-done {
+    color: #3e586c;
+}
+
+.s-late {
+    color: #862222;
+}
+
+/* ─── Divider ─── */
+.col-div {
+    width: 1px;
+    background: #1a364a;
+    flex-shrink: 0;
+}
+
+/* ─── Detail panel ─── */
+.detail-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.dp-titlebar {
+    background: #3e586c;
+    display: flex;
+    align-items: center;
+    padding: 5px 9px;
+    flex-shrink: 0;
+}
+
+.dp-title {
+    flex: 1;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    color: #f0ece4;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dp-close-btn {
+    width: 20px;
+    height: 20px;
+    background: #862222;
+    border: none;
+    color: #f0ece4;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.dp-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: #f9f6f0;
+    border: 1px solid #3e586c;
+    border-top: none;
+}
+
+.dp-body::-webkit-scrollbar {
+    width: 3px;
+}
+
+.dp-body::-webkit-scrollbar-thumb {
+    background: #3e586c;
+}
+
+.dp-empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c8c0b4;
+    border-top: none;
+    background: #f9f6f0;
+}
+
+.dp-empty em {
+    font-style: italic;
+    color: #8ab0c4;
+    font-size: 13px;
+}
+
+/* ─── Fields ─── */
+.field {
+    margin-bottom: 15px;
+}
+
+.field-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #3e586c;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    margin-bottom: 3px;
+}
+
+.field-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #142d40;
+    line-height: 1.7;
+}
+
+.field-input {
+    width: 100%;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #142d40;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #3e586c;
+    padding: 2px 0 3px;
+    outline: none;
+}
+
+.field-textarea {
+    width: 100%;
+    font-family: 'IM Fell English', serif;
+    font-size: 13px;
+    color: #142d40;
+    background: transparent;
+    border: 1px solid #c8c0b4;
+    padding: 5px;
+    outline: none;
+    resize: vertical;
+    min-height: 70px;
+    line-height: 1.65;
+}
+
+.field-input:focus,
+.field-textarea:focus {
+    border-color: #1a364a;
+}
+
+.status-select {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #142d40;
+    background: #f9f6f0;
+    border: 1px solid #3e586c;
+    padding: 3px 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dp-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #c8c0b4;
+}
+
+.act-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 5px 12px;
+    border: 1px solid #142d40;
+    background: transparent;
+    color: #142d40;
+    cursor: pointer;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.act-btn:hover {
+    background: #142d40;
+    color: #f0ece4;
+}
+
+.act-btn.primary {
+    background: #142d40;
+    color: #f0ece4;
+}
+
+.act-btn.primary:hover {
+    background: #3e586c;
+    border-color: #3e586c;
+}
+
+/* ─── Login page ─── */
+.login-screen {
+    width: 100%;
+    min-height: 100svh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IM Fell English', serif;
+    padding: 40px 16px;
+}
+
+.brand {
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: #142d40;
+    letter-spacing: .02em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-family: 'IM Fell English', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: #1a364a;
+    margin-bottom: 40px;
+}
+
+.form-area {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.global-err {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #862222;
+    letter-spacing: .03em;
+    margin-bottom: 10px;
+    min-height: 16px;
+    line-height: 1.5;
+}
+
+.login-input {
+    width: 100%;
+    font-family: 'IM Fell English', serif;
+    font-size: 15px;
+    color: #142d40;
+    background: #fff;
+    border: 1.5px solid #1a364a;
+    padding: 10px 12px;
+    outline: none;
+    margin-bottom: 8px;
+    transition: border-color .15s;
+}
+
+.login-input::placeholder {
+    color: #8ab0c4;
+}
+
+.login-input:focus {
+    border-color: #142d40;
+}
+
+.login-input.err {
+    border-color: #862222;
+}
+
+.field-err {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #862222;
+    letter-spacing: .04em;
+    margin-top: -6px;
+    margin-bottom: 8px;
+    display: none;
+}
+
+.field-err.show {
+    display: block;
+}
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
+.toggle-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #3e586c;
+    cursor: pointer;
+    letter-spacing: .04em;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: right;
+}
+
+.toggle-link:hover {
+    color: #142d40;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #142d40;
+    color: #f0ece4;
+    border: none;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: .12em;
+    padding: 11px;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.submit-btn:hover {
+    background: #3e586c;
+}
+
+.submit-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.div-line {
+    flex: 1;
+    height: 1px;
+    background: #c8c0b4;
+}
+
+.div-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: #8ab0c4;
+    letter-spacing: .08em;
+}
+
+.google-btn {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid #1a364a;
+    color: #1a364a;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .06em;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background .15s;
+}
+
+.google-btn:hover {
+    background: #f0f4f7;
+}
+
+.google-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* ─── Backend down banner ─── */
+.backend-down {
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.backend-down .brand {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.backend-down .subtitle {
+    font-size: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Loading... */
+.loading-screen {
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: #142d40;
+    text-align: center;
+    text-decoration: underline;
+}
