@@ -69,7 +69,7 @@ WhiteVoid/
 ### 1. Clone the repository
 In the terminal, run the following command:
 ```bash
-git clone <github repository path>
+git clone https://github.com/dp-24ctt3/WhiteVoid.git
 cd WhiteVoid
 ```
 #### IMPORTANT:
@@ -110,6 +110,8 @@ cd frontend
     ```
     Copy the Firebase configuration to the .env in your frontend folder.
 
+    > Restart the dev server after any changes to `.env`.
+
 ### 3. Install dependencies
 From backend terminal:
 ```bash
@@ -137,5 +139,5 @@ Run the frontend, from frontend terminal:
 npm run dev
 ```
 
-## Demo
+## Demo video
 [![Demo](https://github.com/user-attachments/assets/9d30e6ed-7a0b-4731-92c2-a1234f9feef8)](https://www.youtube.com/watch?v=zTzxsZPAqoQ)
