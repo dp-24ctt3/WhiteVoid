@@ -55,6 +55,8 @@ WhiteVoid/
     │   ├── main.jsx                # App entry point
     │   ├── index.css
     │   └── App.css
+    ├── .env                        # Firebase configuration (not committed)
+    ├── .env.example                # Template for .env
     ├── index.html                  # HTML template
     ├── vite.config.js              # Vite config
     └── package.json                # Node dependencies and npm scripts
