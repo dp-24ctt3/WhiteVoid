@@ -138,4 +138,4 @@ npm run dev
 ```
 
 ## Demo
-![Demo](link)
+[![Demo](https://github.com/user-attachments/assets/9d30e6ed-7a0b-4731-92c2-a1234f9feef8)](https://www.youtube.com/watch?v=zTzxsZPAqoQ)
