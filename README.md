@@ -94,13 +94,19 @@ cd frontend
    - Collection: tasks
    - Fields: user_id (Ascending), created_at (Descending)
 6. Download the service account JSON file
-7. Setup file .env
+7. Setup .env files
 
     From backend terminal:
     ```bash
     cp .env.example .env
     ```
-    Copy the service account JSON file to the `backend` folder, **REMEMBER** to put the keys on a **single line**.
+    Copy the service account JSON file to the .env in your backend folder, **REMEMBER** to put the keys on a **single line**.
+
+    From frontend terminal:
+    ```bash
+    cp .env.example .env
+    ```
+    Copy the Firebase configuration to the .env in your frontend folder.
 
 ### 3. Install dependencies
 From backend terminal:
